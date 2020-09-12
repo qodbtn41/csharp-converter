@@ -1,0 +1,7 @@
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\bin\Debug\CSharp2JavaConverter.exe
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\bin\Debug\CSharp2JavaConverter.pdb
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\obj\x86\Debug\CSharp2JavaConverter.Form1.resources
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\obj\x86\Debug\CSharp2JavaConverter.Properties.Resources.resources
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\obj\x86\Debug\CSharp2JavaConverter.csproj.GenerateResource.Cache
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\obj\x86\Debug\CSharp2JavaConverter.exe
+C:\Users\USER\Documents\GitHub\csharp-converter\CSharp2JavaConverter\CSharp2JavaConverter\obj\x86\Debug\CSharp2JavaConverter.pdb
