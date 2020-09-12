@@ -38,19 +38,23 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBefore = new System.Windows.Forms.TextBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.listFilters = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textAfter = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textNewFilter = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listFilters = new System.Windows.Forms.CheckedListBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -136,7 +140,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.listFilters);
-            this.groupBox6.Controls.Add(this.groupBox7);
+            this.groupBox6.Controls.Add(this.panel1);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox6.Location = new System.Drawing.Point(0, 493);
             this.groupBox6.Name = "groupBox6";
@@ -165,27 +169,6 @@
             this.textBefore.Size = new System.Drawing.Size(776, 395);
             this.textBefore.TabIndex = 0;
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.textNewFilter);
-            this.groupBox7.Controls.Add(this.buttonAdd);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox7.Location = new System.Drawing.Point(3, 21);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(200, 76);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Add";
-            // 
-            // listFilters
-            // 
-            this.listFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listFilters.Location = new System.Drawing.Point(203, 21);
-            this.listFilters.Name = "listFilters";
-            this.listFilters.Size = new System.Drawing.Size(576, 76);
-            this.listFilters.TabIndex = 3;
-            this.listFilters.UseCompatibleStateImageBehavior = false;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textAfter);
@@ -206,14 +189,36 @@
             this.textAfter.Size = new System.Drawing.Size(393, 395);
             this.textAfter.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(386, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(393, 76);
+            this.panel1.TabIndex = 4;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textNewFilter);
+            this.groupBox7.Controls.Add(this.buttonAdd);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox7.Location = new System.Drawing.Point(0, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(284, 76);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Add";
+            // 
             // buttonAdd
             // 
-            this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonAdd.Location = new System.Drawing.Point(122, 21);
+            this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonAdd.Location = new System.Drawing.Point(3, 49);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 52);
+            this.buttonAdd.Size = new System.Drawing.Size(278, 24);
             this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "ADD";
+            this.buttonAdd.Text = "Add Filter";
             this.buttonAdd.UseVisualStyleBackColor = true;
             // 
             // textNewFilter
@@ -222,8 +227,32 @@
             this.textNewFilter.Location = new System.Drawing.Point(3, 21);
             this.textNewFilter.Multiline = true;
             this.textNewFilter.Name = "textNewFilter";
-            this.textNewFilter.Size = new System.Drawing.Size(119, 52);
-            this.textNewFilter.TabIndex = 2;
+            this.textNewFilter.Size = new System.Drawing.Size(278, 28);
+            this.textNewFilter.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(284, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 76);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Apply";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // listFilters
+            // 
+            this.listFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listFilters.FormattingEnabled = true;
+            this.listFilters.Location = new System.Drawing.Point(3, 21);
+            this.listFilters.Name = "listFilters";
+            this.listFilters.Size = new System.Drawing.Size(383, 76);
+            this.listFilters.TabIndex = 7;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "C#프로그램|*.cs";
+            this.openFileDialog.Title = "CS 파일 선택";
             // 
             // Form1
             // 
@@ -244,10 +273,11 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -264,12 +294,15 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBefore;
-        private System.Windows.Forms.ListView listFilters;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textAfter;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox textNewFilter;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textAfter;
+        private System.Windows.Forms.CheckedListBox listFilters;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
