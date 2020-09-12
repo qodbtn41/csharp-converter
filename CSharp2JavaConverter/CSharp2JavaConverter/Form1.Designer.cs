@@ -36,8 +36,6 @@
             this.radioDirectory = new System.Windows.Forms.RadioButton();
             this.radioFile = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textAfter = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -45,16 +43,23 @@
             this.buttonApply = new System.Windows.Forms.Button();
             this.listFilters = new System.Windows.Forms.CheckedListBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBefore = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textAfter = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -149,27 +154,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filter";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textAfter);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox3.Location = new System.Drawing.Point(383, 74);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(399, 419);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "After";
-            // 
-            // textAfter
-            // 
-            this.textAfter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textAfter.Location = new System.Drawing.Point(3, 21);
-            this.textAfter.Multiline = true;
-            this.textAfter.Name = "textAfter";
-            this.textAfter.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textAfter.Size = new System.Drawing.Size(393, 395);
-            this.textAfter.TabIndex = 1;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.buttonApply);
@@ -235,14 +219,32 @@
             this.openFileDialog.Filter = "C#프로그램|*.cs";
             this.openFileDialog.Title = "CS 파일 선택";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 74);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer1.Size = new System.Drawing.Size(782, 419);
+            this.splitContainer1.SplitterDistance = 379;
+            this.splitContainer1.SplitterWidth = 10;
+            this.splitContainer1.TabIndex = 2;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBefore);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 74);
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(383, 419);
-            this.groupBox2.TabIndex = 8;
+            this.groupBox2.Size = new System.Drawing.Size(379, 419);
+            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Before";
             // 
@@ -253,16 +255,36 @@
             this.textBefore.Multiline = true;
             this.textBefore.Name = "textBefore";
             this.textBefore.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBefore.Size = new System.Drawing.Size(377, 395);
+            this.textBefore.Size = new System.Drawing.Size(373, 395);
             this.textBefore.TabIndex = 1;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textAfter);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(393, 419);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "After";
+            // 
+            // textAfter
+            // 
+            this.textAfter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textAfter.Location = new System.Drawing.Point(3, 21);
+            this.textAfter.Multiline = true;
+            this.textAfter.Name = "textAfter";
+            this.textAfter.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textAfter.Size = new System.Drawing.Size(387, 395);
+            this.textAfter.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 593);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -273,13 +295,17 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -294,8 +320,6 @@
         private System.Windows.Forms.RadioButton radioDirectory;
         private System.Windows.Forms.RadioButton radioFile;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textAfter;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -303,8 +327,11 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.CheckedListBox listFilters;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBefore;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textAfter;
     }
 }
 
