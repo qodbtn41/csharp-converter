@@ -13,6 +13,7 @@ namespace CSharp2JavaConverter
     public partial class Form1 : Form
     {
         public string FilePath { get; set; }
+        public List<string> Properties { get; set; }
 
         public Form1()
         {
@@ -22,7 +23,25 @@ namespace CSharp2JavaConverter
 
         private void AddEventHandler()
         {
+            this.Load += new EventHandler(Form1_Load);
             this.buttonSearch.Click += new EventHandler(buttonSearch_Click);
+        }
+
+        void Form1_Load(object sender, EventArgs e)
+        {
+            // Read the file and display it line by line.  
+            string propertyPath = Environment.CurrentDirectory + @"\filter.properties";
+            System.IO.StreamReader file = new System.IO.StreamReader(propertyPath);  
+            this.Properties = new List<string>();
+
+            string line;  
+            while((line = file.ReadLine()) != null)  
+            {  
+                System.Console.WriteLine(line);
+                this.Properties.Add(line);
+            }  
+  
+            file.Close();
         }
 
         void buttonSearch_Click(object sender, EventArgs e)
@@ -55,6 +74,7 @@ namespace CSharp2JavaConverter
             string textValue = System.IO.File.ReadAllText(filePath);
             this.textBefore.Text = textValue;
         }
+
 
     }
 }
