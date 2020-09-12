@@ -27,9 +27,13 @@ namespace CSharp2JavaConverter
             this.buttonSearch.Click += new EventHandler(buttonSearch_Click);
         }
 
+        /// <summary>
+        /// 프로퍼티 파일을 한줄씩 읽어온다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Form1_Load(object sender, EventArgs e)
         {
-            // Read the file and display it line by line.  
             string propertyPath = Environment.CurrentDirectory + @"\filter.properties";
             System.IO.StreamReader file = new System.IO.StreamReader(propertyPath);  
             this.Properties = new List<string>();
@@ -44,6 +48,11 @@ namespace CSharp2JavaConverter
             file.Close();
         }
 
+        /// <summary>
+        /// 변경할 파일을 선택한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void buttonSearch_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = this.openFileDialog.ShowDialog();
@@ -67,7 +76,10 @@ namespace CSharp2JavaConverter
                 this.LoadFile();
             }
         }
-
+        
+        /// <summary>
+        /// 파일 데이터를 읽어들인다.
+        /// </summary>
         private void LoadFile()
         {
             string filePath = this.textFile.Text;
