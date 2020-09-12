@@ -36,8 +36,6 @@
             this.radioDirectory = new System.Windows.Forms.RadioButton();
             this.radioFile = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBefore = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textAfter = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,14 +45,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.listFilters = new System.Windows.Forms.CheckedListBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBefore = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -149,26 +149,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filter";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBefore);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 74);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(782, 419);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Before";
-            // 
-            // textBefore
-            // 
-            this.textBefore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBefore.Location = new System.Drawing.Point(3, 21);
-            this.textBefore.Multiline = true;
-            this.textBefore.Name = "textBefore";
-            this.textBefore.Size = new System.Drawing.Size(776, 395);
-            this.textBefore.TabIndex = 0;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textAfter);
@@ -186,6 +166,7 @@
             this.textAfter.Location = new System.Drawing.Point(3, 21);
             this.textAfter.Multiline = true;
             this.textAfter.Name = "textAfter";
+            this.textAfter.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textAfter.Size = new System.Drawing.Size(393, 395);
             this.textAfter.TabIndex = 1;
             // 
@@ -254,13 +235,34 @@
             this.openFileDialog.Filter = "C#프로그램|*.cs";
             this.openFileDialog.Title = "CS 파일 선택";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBefore);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 74);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(383, 419);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Before";
+            // 
+            // textBefore
+            // 
+            this.textBefore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBefore.Location = new System.Drawing.Point(3, 21);
+            this.textBefore.Multiline = true;
+            this.textBefore.Name = "textBefore";
+            this.textBefore.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBefore.Size = new System.Drawing.Size(377, 395);
+            this.textBefore.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 593);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -271,13 +273,13 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -292,8 +294,6 @@
         private System.Windows.Forms.RadioButton radioDirectory;
         private System.Windows.Forms.RadioButton radioFile;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBefore;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textAfter;
         private System.Windows.Forms.Panel panel1;
@@ -303,6 +303,8 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.CheckedListBox listFilters;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBefore;
     }
 }
 

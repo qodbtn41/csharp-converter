@@ -12,6 +12,8 @@ namespace CSharp2JavaConverter
 {
     public partial class Form1 : Form
     {
+        public string FilePath { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +34,27 @@ namespace CSharp2JavaConverter
                 string fileFullName = openFileDialog.FileName;
                 string filePath = fileFullName.Replace(fileName, "");
 
-                this.textFile.Text = filePath;
+                this.FilePath = filePath;
+
+                if (this.radioFile.Checked)
+                {
+                    this.textFile.Text = fileFullName;
+                }
+                else
+                {
+                    this.textFile.Text = filePath;
+                }
+
+                this.LoadFile();
             }
         }
+
+        private void LoadFile()
+        {
+            string filePath = this.textFile.Text;
+            string textValue = System.IO.File.ReadAllText(filePath);
+            this.textBefore.Text = textValue;
+        }
+
     }
 }
