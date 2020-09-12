@@ -33,6 +33,19 @@ namespace CSharp2JavaConverter
         // 적용한다.
         void buttonApply_Click(object sender, EventArgs e)
         {
+            string textAfter = this.textAfter.Text;
+
+            foreach (object itemChecked in this.listFilters.CheckedItems)
+            {
+                string strChecked = (string)itemChecked;
+
+                if(strChecked != null && strChecked != "")
+                {
+                    textAfter = textAfter.Replace(strChecked, this.Properties[strChecked]);
+                }
+            }
+
+            this.textAfter.Text = textAfter;
         }
 
         /// <summary>
