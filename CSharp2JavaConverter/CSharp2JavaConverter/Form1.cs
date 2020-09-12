@@ -12,8 +12,10 @@ namespace CSharp2JavaConverter
 {
     public partial class Form1 : Form
     {
+        public static readonly char SEPERATOR = ':';
+
         public string FilePath { get; set; }
-        public List<string> Properties { get; set; }
+        public Dictionary<string,string> Properties { get; set; }
 
         public Form1()
         {
@@ -25,6 +27,12 @@ namespace CSharp2JavaConverter
         {
             this.Load += new EventHandler(Form1_Load);
             this.buttonSearch.Click += new EventHandler(buttonSearch_Click);
+            this.buttonApply.Click += new EventHandler(buttonApply_Click);
+        }
+
+        // 적용한다.
+        void buttonApply_Click(object sender, EventArgs e)
+        {
         }
 
         /// <summary>
@@ -36,15 +44,33 @@ namespace CSharp2JavaConverter
         {
             string propertyPath = Environment.CurrentDirectory + @"\filter.properties";
             System.IO.StreamReader file = new System.IO.StreamReader(propertyPath);  
-            this.Properties = new List<string>();
+            this.Properties = new Dictionary<string,string>();
 
             string line;  
             while((line = file.ReadLine()) != null)  
             {  
                 System.Console.WriteLine(line);
-                this.Properties.Add(line);
-            }  
-  
+                string[] beforeAfter = line.Split(SEPERATOR);
+                if (beforeAfter != null && beforeAfter.Length == 2)
+                {
+                    string before = beforeAfter[0];
+                    string after = beforeAfter[1];
+
+                    if (this.Properties.ContainsKey(before))
+                    {
+                        this.Properties[before] = after;
+                    }
+                    else
+                    {
+                        this.Properties.Add(before, after);
+                    }
+                }
+            }
+
+            this.listFilters.Items.AddRange(this.Properties.Keys.ToArray());
+            for(int i = 0 ; i < this.listFilters.Items.Count ; i++){
+                this.listFilters.SetItemChecked(i, true);
+            }
             file.Close();
         }
 
@@ -85,6 +111,7 @@ namespace CSharp2JavaConverter
             string filePath = this.textFile.Text;
             string textValue = System.IO.File.ReadAllText(filePath);
             this.textBefore.Text = textValue;
+            this.textAfter.Text = textValue;
         }
 
 

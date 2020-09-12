@@ -42,7 +42,7 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textNewFilter = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonApply = new System.Windows.Forms.Button();
             this.listFilters = new System.Windows.Forms.CheckedListBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -172,7 +172,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.buttonApply);
             this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(386, 21);
@@ -211,15 +211,15 @@
             this.textNewFilter.Size = new System.Drawing.Size(278, 28);
             this.textNewFilter.TabIndex = 3;
             // 
-            // button1
+            // buttonApply
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(284, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 76);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Apply";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonApply.Location = new System.Drawing.Point(284, 0);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(109, 76);
+            this.buttonApply.TabIndex = 3;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
             // 
             // listFilters
             // 
@@ -297,7 +297,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textAfter;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox textNewFilter;
         private System.Windows.Forms.Button buttonAdd;
