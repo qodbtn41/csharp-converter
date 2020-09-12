@@ -121,6 +121,7 @@
             // 
             this.radioDirectory.AutoSize = true;
             this.radioDirectory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioDirectory.Enabled = false;
             this.radioDirectory.Location = new System.Drawing.Point(53, 21);
             this.radioDirectory.Name = "radioDirectory";
             this.radioDirectory.Size = new System.Drawing.Size(86, 26);
