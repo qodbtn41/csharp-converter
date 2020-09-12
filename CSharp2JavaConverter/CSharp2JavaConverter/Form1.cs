@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace CSharp2JavaConverter
 {
@@ -28,6 +29,12 @@ namespace CSharp2JavaConverter
             this.Load += new EventHandler(Form1_Load);
             this.buttonSearch.Click += new EventHandler(buttonSearch_Click);
             this.buttonApply.Click += new EventHandler(buttonApply_Click);
+            this.buttonAdd.Click += new EventHandler(buttonAdd_Click);
+        }
+
+        void buttonAdd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("아직 개발되지 않은 기능입니다.");
         }
 
         // 적용한다.
@@ -41,7 +48,16 @@ namespace CSharp2JavaConverter
 
                 if(strChecked != null && strChecked != "")
                 {
-                    textAfter = textAfter.Replace(strChecked, this.Properties[strChecked]);
+                    if (strChecked.StartsWith("`"))
+                    {
+                        Console.WriteLine("strChecked : " + strChecked.Substring(1));
+                        Console.WriteLine("value : " + this.Properties[strChecked]);
+                        textAfter = Regex.Replace(textAfter, strChecked.Substring(1), this.Properties[strChecked]);
+                    }
+                    else
+                    {
+                        textAfter = textAfter.Replace(strChecked, this.Properties[strChecked]);
+                    }
                 }
             }
 
@@ -67,7 +83,9 @@ namespace CSharp2JavaConverter
                 if (beforeAfter != null && beforeAfter.Length == 2)
                 {
                     string before = beforeAfter[0];
-                    string after = beforeAfter[1];
+                    string after = beforeAfter[1] != null ? beforeAfter[1] : "";
+
+                    if (before == null || before.Equals("")) continue;
 
                     if (this.Properties.ContainsKey(before))
                     {
