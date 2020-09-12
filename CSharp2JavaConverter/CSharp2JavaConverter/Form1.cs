@@ -61,6 +61,9 @@ namespace CSharp2JavaConverter
                 }
             }
 
+            textAfter = Regex.Replace(textAfter, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+
+
             this.textAfter.Text = textAfter;
         }
 
