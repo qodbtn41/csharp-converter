@@ -37,17 +37,22 @@
             this.radioFile = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.textNewFilter = new System.Windows.Forms.TextBox();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.listFilters = new System.Windows.Forms.CheckedListBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textNewFilter = new System.Windows.Forms.TextBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBefore = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textAfter = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.listFilters = new System.Windows.Forms.CheckedListBox();
+            this.checkBoxComment = new System.Windows.Forms.CheckBox();
+            this.checkBoxConstructor = new System.Windows.Forms.CheckBox();
+            this.checkBoxException = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -60,6 +65,8 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -145,7 +152,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.listFilters);
+            this.groupBox6.Controls.Add(this.panel2);
             this.groupBox6.Controls.Add(this.panel1);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox6.Location = new System.Drawing.Point(0, 493);
@@ -165,6 +172,16 @@
             this.panel1.Size = new System.Drawing.Size(393, 76);
             this.panel1.TabIndex = 4;
             // 
+            // buttonApply
+            // 
+            this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonApply.Location = new System.Drawing.Point(284, 0);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(109, 76);
+            this.buttonApply.TabIndex = 3;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.textNewFilter);
@@ -177,16 +194,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add";
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonAdd.Location = new System.Drawing.Point(3, 49);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(278, 24);
-            this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "Add Filter";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            // 
             // textNewFilter
             // 
             this.textNewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -196,24 +203,15 @@
             this.textNewFilter.Size = new System.Drawing.Size(278, 28);
             this.textNewFilter.TabIndex = 3;
             // 
-            // buttonApply
+            // buttonAdd
             // 
-            this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(284, 0);
-            this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(109, 76);
-            this.buttonApply.TabIndex = 3;
-            this.buttonApply.Text = "Apply";
-            this.buttonApply.UseVisualStyleBackColor = true;
-            // 
-            // listFilters
-            // 
-            this.listFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listFilters.FormattingEnabled = true;
-            this.listFilters.Location = new System.Drawing.Point(3, 21);
-            this.listFilters.Name = "listFilters";
-            this.listFilters.Size = new System.Drawing.Size(383, 76);
-            this.listFilters.TabIndex = 7;
+            this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonAdd.Location = new System.Drawing.Point(3, 49);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(278, 24);
+            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.Text = "Add Filter";
+            this.buttonAdd.UseVisualStyleBackColor = true;
             // 
             // openFileDialog
             // 
@@ -280,6 +278,68 @@
             this.textAfter.Size = new System.Drawing.Size(387, 395);
             this.textAfter.TabIndex = 1;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.checkBoxException);
+            this.groupBox8.Controls.Add(this.checkBoxConstructor);
+            this.groupBox8.Controls.Add(this.checkBoxComment);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox8.Location = new System.Drawing.Point(183, 0);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 76);
+            this.groupBox8.TabIndex = 8;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Predefined";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.listFilters);
+            this.panel2.Controls.Add(this.groupBox8);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 21);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(383, 76);
+            this.panel2.TabIndex = 9;
+            // 
+            // listFilters
+            // 
+            this.listFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listFilters.FormattingEnabled = true;
+            this.listFilters.Location = new System.Drawing.Point(0, 0);
+            this.listFilters.Name = "listFilters";
+            this.listFilters.Size = new System.Drawing.Size(183, 76);
+            this.listFilters.TabIndex = 11;
+            // 
+            // checkBoxComment
+            // 
+            this.checkBoxComment.AutoSize = true;
+            this.checkBoxComment.Location = new System.Drawing.Point(11, 24);
+            this.checkBoxComment.Name = "checkBoxComment";
+            this.checkBoxComment.Size = new System.Drawing.Size(59, 19);
+            this.checkBoxComment.TabIndex = 0;
+            this.checkBoxComment.Text = "주석";
+            this.checkBoxComment.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxConstructor
+            // 
+            this.checkBoxConstructor.AutoSize = true;
+            this.checkBoxConstructor.Location = new System.Drawing.Point(11, 49);
+            this.checkBoxConstructor.Name = "checkBoxConstructor";
+            this.checkBoxConstructor.Size = new System.Drawing.Size(74, 19);
+            this.checkBoxConstructor.TabIndex = 1;
+            this.checkBoxConstructor.Text = "생성자";
+            this.checkBoxConstructor.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxException
+            // 
+            this.checkBoxException.AutoSize = true;
+            this.checkBoxException.Location = new System.Drawing.Point(90, 24);
+            this.checkBoxException.Name = "checkBoxException";
+            this.checkBoxException.Size = new System.Drawing.Size(94, 19);
+            this.checkBoxException.TabIndex = 2;
+            this.checkBoxException.Text = "예외 처리";
+            this.checkBoxException.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -307,6 +367,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -326,13 +389,18 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox textNewFilter;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.CheckedListBox listFilters;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBefore;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textAfter;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckedListBox listFilters;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox checkBoxException;
+        private System.Windows.Forms.CheckBox checkBoxConstructor;
+        private System.Windows.Forms.CheckBox checkBoxComment;
     }
 }
 

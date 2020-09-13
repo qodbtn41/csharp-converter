@@ -61,10 +61,46 @@ namespace CSharp2JavaConverter
                 }
             }
 
+            textAfter = this.ApplyPredefined(textAfter);
+
             textAfter = Regex.Replace(textAfter, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
 
-
+            
             this.textAfter.Text = textAfter;
+        }
+
+        private string ApplyPredefined(string text)
+        {
+            text = this.RemoveComment(text);
+            text = this.RemoveNamespace(text);
+            text = this.RemoveException(text);
+            text = this.RemoveConstructor(text);
+
+            return text;
+        }
+
+        private string RemoveConstructor(string text)
+        {
+            return text;
+        }
+
+        private string RemoveException(string text)
+        {
+            return text;
+        }
+
+        private string RemoveNamespace(string text)
+        {
+            return text;
+        }
+
+        private string RemoveComment(string text)
+        {
+            if (this.checkBoxComment.Checked)
+            {
+                text = Regex.Replace(text, @"//.*", string.Empty);
+            }
+            return text;
         }
 
         /// <summary>
