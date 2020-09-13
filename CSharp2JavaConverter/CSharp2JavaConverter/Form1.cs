@@ -101,10 +101,49 @@ namespace CSharp2JavaConverter
         private string ApplyPredefined(string text)
         {
             text = this.RemoveComment(text);
+            text = this.RemoveMultiLineComment(text);
             text = this.RemoveNamespace(text);
             text = this.RemoveException(text);
             text = this.RemoveConstructor(text);
 
+            return text;
+        }
+
+        private string RemoveMultiLineComment(string text)
+        {
+            List<string> lines = text.Split('\n').ToList();
+            int startIndex = -1, endIndex = -1;
+            bool started = false;
+            // /*로 시작하면 */로 끝난다.
+            for (int i = 0 ; i < lines.Count ; i++)
+            {
+                string line = lines[i];
+                if (started == false)
+                {
+                    if (line.Contains("/*"))
+                    {
+                        startIndex = i;
+                        started = true;
+                    }
+                }
+
+                if (started && line.Contains("*/"))
+                {
+                    endIndex = i;
+                    break;
+                }
+            }
+
+
+            if (started)
+            {
+                for (int i = endIndex; i >= startIndex; i--)
+                {
+                    lines.RemoveAt(i);
+                }
+
+                text = string.Join("\n", lines);
+            }
             return text;
         }
 
@@ -217,6 +256,7 @@ namespace CSharp2JavaConverter
             {
                 text = Regex.Replace(text, @"//.*", string.Empty);
             }
+           
             return text;
         }
 
