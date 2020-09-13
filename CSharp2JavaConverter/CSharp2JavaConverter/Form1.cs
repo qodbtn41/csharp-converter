@@ -16,7 +16,8 @@ namespace CSharp2JavaConverter
         public static readonly char SEPERATOR = ':';
 
         public string FilePath { get; set; }
-        public Dictionary<string,string> Properties { get; set; }
+        public Dictionary<string, string> Properties { get; set; }
+        public string ClassName { get; set; }
 
         public Form1()
         {
@@ -30,6 +31,34 @@ namespace CSharp2JavaConverter
             this.buttonSearch.Click += new EventHandler(buttonSearch_Click);
             this.buttonApply.Click += new EventHandler(buttonApply_Click);
             this.buttonAdd.Click += new EventHandler(buttonAdd_Click);
+            this.textBefore.TextChanged += new EventHandler(textBefore_TextChanged);
+        }
+
+        /// <summary>
+        /// ClassName을 찾기위한 함수
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void textBefore_TextChanged(object sender, EventArgs e)
+        {
+            string text = this.textBefore.Text;
+            List<string> lines = text.Split('\n').ToList();
+            foreach(string line in lines)
+            {
+                if (line.Contains("public") && line.Contains("class"))
+                {
+                    List<string> words = line.Split(' ').ToList();
+                    words.RemoveAll(word => word.Equals(""));
+                    words.RemoveAll(word => word.Equals("public"));
+                    words.RemoveAll(word => word.Equals("private"));
+                    words.RemoveAll(word => word.Equals("class"));
+                    words.RemoveAll(word => word.Equals("static"));
+                    words.RemoveAll(word => word.Equals("partial"));
+
+                    this.ClassName = words[0];
+                    break;
+                }
+            }
         }
 
         void buttonAdd_Click(object sender, EventArgs e)
@@ -81,14 +110,58 @@ namespace CSharp2JavaConverter
 
         private string RemoveConstructor(string text)
         {
+            if (this.ClassName == null || this.ClassName.Equals("")) return text;
+
+            List<string> lines = text.Split('\n').ToList();
+            int startIndex = -1, endIndex = -1, stack = 0;
+            bool started = false, blockStart = false;
+
             // 클래스 명을 알아야 한다.
+            string className = this.ClassName;
             //처음부터 끝까지
-            //클래스 명()을 찾으면
-            //해당 index부터 블록'{'을 찾고
-            //블록'}'을 찾는다.
-            //다 지운다.
-            //블록 '{' 과 '}' 사이에 새로운 블록'{'을 찾으면 스택 변수에 +1 한다.
-            // 스택 변수가 0이면서 블록'}' 를 찾을때까지 반복한다.
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = lines[i];
+                //클래스 명()을 찾으면
+                if (started == false)
+                {
+                    if (line.Contains(className)
+                        && line.Contains(" class ") == false)
+                    {
+                        startIndex = i;
+                        started = true;
+                    }
+                }
+                
+                if(started)
+                {
+                    //해당 index부터 블록'{'을 찾고
+                    //블록'}'을 찾는다.
+                    //블록 '{' 과 '}' 사이에 새로운 블록'{'을 찾으면 스택 변수에 +1 한다.
+                    // 스택 변수가 0이면서 블록'}' 를 찾을때까지 반복한다.
+                    stack += line.Count(ch => ch == '{');
+                    if (stack > 0) blockStart = true;
+                    stack -= line.Count(ch => ch == '}');
+
+                    if (blockStart && stack == 0)
+                    {
+                        endIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (started)
+            {
+                //다 지운다.
+                for (int i = endIndex; i >= startIndex; i--)
+                {
+                    lines.RemoveAt(i);
+                }
+
+                text = string.Join("\n", lines);
+                text = this.RemoveConstructor(text);
+            }
             return text;
         }
 
@@ -227,6 +300,7 @@ namespace CSharp2JavaConverter
             this.textBefore.Text = textValue;
             this.textAfter.Text = textValue;
         }
+
 
 
     }
