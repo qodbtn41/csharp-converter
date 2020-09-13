@@ -81,6 +81,14 @@ namespace CSharp2JavaConverter
 
         private string RemoveConstructor(string text)
         {
+            // 클래스 명을 알아야 한다.
+            //처음부터 끝까지
+            //클래스 명()을 찾으면
+            //해당 index부터 블록'{'을 찾고
+            //블록'}'을 찾는다.
+            //다 지운다.
+            //블록 '{' 과 '}' 사이에 새로운 블록'{'을 찾으면 스택 변수에 +1 한다.
+            // 스택 변수가 0이면서 블록'}' 를 찾을때까지 반복한다.
             return text;
         }
 
