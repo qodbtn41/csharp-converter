@@ -100,11 +100,20 @@ namespace CSharp2JavaConverter
 
         private string ApplyPredefined(string text)
         {
-            text = this.RemoveComment(text);
-            text = this.RemoveMultiLineComment(text);
+
+            if (this.checkBoxComment.Checked)
+            {
+                text = this.RemoveComment(text);
+                text = this.RemoveMultiLineComment(text);
+            }
             text = this.RemoveNamespace(text);
-            text = this.RemoveException(text);
-            text = this.RemoveConstructor(text);
+            if (this.checkBoxException.Checked)
+            {
+                text = this.RemoveException(text);
+            }
+            if(this.checkBoxConstructor.Checked){
+                text = this.RemoveConstructor(text);
+            }
 
             return text;
         }
@@ -206,6 +215,132 @@ namespace CSharp2JavaConverter
 
         private string RemoveException(string text)
         {
+            // try는 벗긴다.
+            text = this.PeelOffBlockStartWith(text, "try");
+            // catch는 지운다.
+            text = this.RemoveBlockStartWith(text, "catch");
+            // finally는 지운다.
+            text = this.RemoveBlockStartWith(text, "finally");
+
+            return text;
+        }
+
+        private string RemoveBlockStartWith(string text, string startWith)
+        {
+            List<string> lines = text.Split('\n').ToList();
+            int startIndex = -1, endIndex = -1, stack = 0;
+            bool started = false, blockStart = false;
+
+            //처음부터 끝까지
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = lines[i];
+                //해당 단어를 찾으면
+                if (started == false)
+                {
+                    if (line.Contains(startWith)
+                        && line.Contains(" class ") == false)
+                    {
+                        startIndex = i;
+                        started = true;
+                    }
+                }
+
+                if (started)
+                {
+                    //해당 index부터 블록'{'을 찾고
+                    //블록'}'을 찾는다.
+                    //블록 '{' 과 '}' 사이에 새로운 블록'{'을 찾으면 스택 변수에 +1 한다.
+                    // 스택 변수가 0이면서 블록'}' 를 찾을때까지 반복한다.
+                    stack += line.Count(ch => ch == '{');
+                    if (stack > 0) blockStart = true;
+                    stack -= line.Count(ch => ch == '}');
+
+                    if (blockStart && stack == 0)
+                    {
+                        endIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (started)
+            {
+                //다 지운다.
+                for (int i = endIndex; i >= startIndex; i--)
+                {
+                    lines.RemoveAt(i);
+                }
+
+                text = string.Join("\n", lines);
+                text = this.RemoveBlockStartWith(text, startWith);
+            }
+            return text;
+        }
+
+        private string PeelOffBlockStartWith(string text, string startWith)
+        {
+            List<string> lines = text.Split('\n').ToList();
+            List<int> removeIndex = new List<int>();
+            int stack = 0;
+            bool wordFound = false, blockStart = false;
+
+            //처음부터 끝까지
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = lines[i];
+                //해당 단어를 찾으면
+                if (wordFound == false)
+                {
+                    if (line.Contains(startWith))
+                    {
+                        removeIndex.Add(i);
+                        if (line.Contains("{"))
+                        {
+                            //skip
+                        }
+                        else if (lines[i + 1].Contains("{"))
+                        {
+                            removeIndex.Add(i + 1);
+                        }
+                        else
+                        {
+                            removeIndex.Clear();
+                            continue;
+                        }
+
+                        wordFound = true;
+                    }
+                }
+
+                if (wordFound)
+                {
+                    //해당 index부터 블록'{'을 찾고
+                    //블록'}'을 찾는다.
+                    //블록 '{' 과 '}' 사이에 새로운 블록'{'을 찾으면 스택 변수에 +1 한다.
+                    // 스택 변수가 0이면서 블록'}' 를 찾을때까지 반복한다.
+                    stack += line.Count(ch => ch == '{');
+                    if (stack > 0) blockStart = true;
+                    stack -= line.Count(ch => ch == '}');
+
+                    if (blockStart && stack == 0)
+                    {
+                        removeIndex.Add(i);
+                        break;
+                    }
+                }
+            }
+
+            if (wordFound)
+            {
+                foreach (int removeIndedx in removeIndex.OrderByDescending(index => index))
+                {
+                    lines.RemoveAt(removeIndedx);
+                }
+
+                text = string.Join("\n", lines);
+                text = this.PeelOffBlockStartWith(text, startWith);
+            }
             return text;
         }
 
@@ -252,11 +387,7 @@ namespace CSharp2JavaConverter
 
         private string RemoveComment(string text)
         {
-            if (this.checkBoxComment.Checked)
-            {
-                text = Regex.Replace(text, @"//.*", string.Empty);
-            }
-           
+            text = Regex.Replace(text, @"//.*", string.Empty);
             return text;
         }
 
