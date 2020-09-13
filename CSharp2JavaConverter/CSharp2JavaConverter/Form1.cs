@@ -91,6 +91,42 @@ namespace CSharp2JavaConverter
 
         private string RemoveNamespace(string text)
         {
+            List<string> lines = text.Split('\n').ToList();
+            List<int> removeIndex = new List<int>();
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = lines[i];
+                if (line.Contains("namespace"))
+                {
+                    removeIndex.Add(i);
+                    if (line.Contains("{"))
+                    {
+                        //skip
+                    }
+                    else if (lines[i + 1].Contains("{"))
+                    {
+                        removeIndex.Add(i + 1);
+                    }
+                    break;
+                }
+            }
+
+            for (int i = lines.Count - 1; i > 0; i--)
+            {
+                string line = lines[i];
+                if (line.Contains("}"))
+                {
+                    removeIndex.Add(i);
+                    break;
+                }
+            }
+
+            foreach (int removeIndedx in removeIndex.OrderByDescending(index => index))
+            {
+                lines.RemoveAt(removeIndedx);
+            }
+            text = string.Join("\n", lines);
             return text;
         }
 
